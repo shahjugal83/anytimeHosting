@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { FaInstagram, FaYoutube, FaTwitter, FaFacebook } from "react-icons/fa";
 
 const socials = [
-  { name: "Instagram", icon: FaInstagram, href: "https://instagram.com", color: "hover:text-pink-500" },
-  { name: "YouTube", icon: FaYoutube, href: "https://youtube.com", color: "hover:text-red-500" },
-  { name: "Twitter", icon: FaTwitter, href: "https://twitter.com", color: "hover:text-sky-400" },
-  { name: "Facebook", icon: FaFacebook, href: "https://facebook.com", color: "hover:text-blue-500" },
+  { name: "Instagram", icon: FaInstagram, href: "https://instagram.com/anytimehost", color: "hover:text-pink-500" },
+  { name: "YouTube", icon: FaYoutube, href: "https://youtube.com/@anytimehost", color: "hover:text-red-500" },
+  { name: "Twitter", icon: FaTwitter, href: "https://twitter.com/anytimehost", color: "hover:text-sky-400" },
+  { name: "Facebook", icon: FaFacebook, href: "https://facebook.com/anytimehost", color: "hover:text-blue-500" },
 ];
 
 export default function SocialIcons() {
