@@ -6,7 +6,7 @@ import { FaInstagram, FaYoutube, FaTwitter, FaFacebook } from "react-icons/fa";
 const socials = [
   { name: "Instagram", icon: FaInstagram, href: "https://instagram.com/anytimehost", color: "hover:text-pink-500" },
   { name: "YouTube", icon: FaYoutube, href: "https://youtube.com/@anytimehost", color: "hover:text-red-500" },
-  { name: "Twitter", icon: FaTwitter, href: "https://twitter.com/anytimehost", color: "hover:text-sky-400" },
+  { name: "Twitter", icon: FaTwitter, href: "https://x.com/hostingAnyTime", color: "hover:text-sky-400" },
   { name: "Facebook", icon: FaFacebook, href: "https://facebook.com/anytimehost", color: "hover:text-blue-500" },
 ];
 
