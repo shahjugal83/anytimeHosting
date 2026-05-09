@@ -4,48 +4,114 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
+function FloatingParticle({ delay }: { delay: number }) {
+  return (
+    <motion.div
+      className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full opacity-40"
+      initial={{ opacity: 0, y: 0, x: 0 }}
+      animate={{
+        opacity: [0, 0.6, 0],
+        y: [-50, -150],
+        x: [0, 30, -30],
+      }}
+      transition={{
+        duration: 4,
+        delay,
+        repeat: Infinity,
+        ease: "easeOut",
+      }}
+    />
+  );
+}
+
 export default function Hero() {
   const router = useRouter();
 
   return (
-    <section className="bg-black text-white min-h-screen flex flex-col items-center justify-center px-4">
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0f1d32] to-[#0a1628]">
+        <motion.div
+          className="absolute top-[10%] left-[10%] w-[clamp(200px,40vw,384px)] h-[clamp(200px,40vw,384px)] bg-gradient-to-br from-amber-500/20 to-amber-600/10 rounded-full blur-[clamp(60px,15vw,120px)]"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-[10%] right-[10%] w-[clamp(160px,35vw,320px)] h-[clamp(160px,35vw,320px)] bg-gradient-to-br from-blue-600/20 to-blue-800/10 rounded-full blur-[clamp(50px,12vw,100px)]"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{ duration: 6, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[clamp(300px,50vw,500px)] h-[clamp(300px,50vw,500px)] bg-gradient-to-r from-amber-500/10 via-blue-600/10 to-amber-500/10 rounded-full blur-[150px]"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+        {[...Array(6)].map((_, i) => (
+          <FloatingParticle key={i} delay={i * 0.8} />
+        ))}
+      </div>
+
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-        className="mb-4 sm:mb-6"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="mb-6 sm:mb-8 lg:mb-10 relative z-10"
       >
-        <Image src="/logo.png" alt="AnyTimeHost Logo" width={200} height={80} className="h-auto w-auto" priority />
+        <div className="relative p-4 sm:p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-[#0f1d32]/80 to-[#0a1628]/40 backdrop-blur-md border border-amber-500/20 shadow-2xl shadow-amber-500/10">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-blue-600/5 rounded-2xl" />
+          <Image src="/logo.png" alt="AnyTimeHost Logo" width={160} height={64} className="h-auto w-auto max-w-[140px] sm:max-w-[180px] lg:max-w-[200px] relative" priority />
+        </div>
       </motion.div>
 
       <motion.h1
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
-        className="text-2xl sm:text-3xl md:text-5xl font-bold text-center max-w-3xl px-2"
+        className="text-[clamp(1.75rem,5vw,3.75rem)] font-bold text-center max-w-[min(90vw,768px)] px-2 relative z-10 leading-[1.1]"
       >
-        Launching Your Dream Website is Now Easier Than Ever…
+        <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
+          Launching Your Dream Website
+        </span>
+        <br />
+        <span className="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent">
+          is Now Easier Than Ever…
+        </span>
       </motion.h1>
 
       <motion.button
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{
+          scale: 1.05,
+          boxShadow: "0 0 40px rgba(212, 175, 55, 0.5)",
+        }}
         whileTap={{ scale: 0.95 }}
         onClick={() => router.push("/contact")}
-        className="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-orange-500 text-white text-base sm:text-lg font-semibold rounded-lg shadow-lg shadow-orange-500/30 cursor-pointer"
+        className="mt-8 sm:mt-10 lg:mt-12 px-6 sm:px-10 lg:px-14 py-3 sm:py-4 lg:py-5 bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 text-[#0a1628] font-bold rounded-full shadow-lg shadow-amber-500/30 cursor-pointer relative z-10"
       >
         Start Today!
       </motion.button>
 
       <motion.div
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="mt-8 sm:mt-12"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="mt-10 sm:mt-14 lg:mt-16 relative z-10"
       >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-3 bg-white/50 rounded-full" />
+        <div className="w-6 sm:w-7 h-10 sm:h-12 border-2 border-amber-400/30 rounded-full flex justify-center pt-2">
+          <motion.div
+            animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-1 sm:w-1.5 h-2.5 sm:h-3 bg-amber-400/60 rounded-full"
+          />
         </div>
       </motion.div>
     </section>
