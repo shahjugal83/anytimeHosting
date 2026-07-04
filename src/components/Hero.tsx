@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 function FloatingParticle({ delay }: { delay: number }) {
   return (
@@ -57,17 +56,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="mb-6 sm:mb-8 lg:mb-10 relative z-10"
-      >
-        <div className="relative p-4 sm:p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-[#0f1d32]/80 to-[#0a1628]/40 backdrop-blur-md border border-amber-500/20 shadow-2xl shadow-amber-500/10">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-blue-600/5 rounded-2xl" />
-          <Image src="/logo.png" alt="AnyTimeHost Logo" width={160} height={64} className="h-auto w-auto max-w-[140px] sm:max-w-[180px] lg:max-w-[200px] relative" priority />
-        </div>
-      </motion.div>
+
 
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
