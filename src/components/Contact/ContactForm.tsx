@@ -1,18 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import SocialIcons from "@/components/SocialIcons";
 
 export default function ContactForm() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
       <div className="w-full max-w-[min(90vw,480px)] lg:max-w-xl relative z-10">
-        <div className="text-center mb-6 sm:mb-8">
-          <div className="relative inline-block p-4 sm:p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-[#0f1d32]/80 to-[#0a1628]/40 backdrop-blur-md border border-amber-500/20 shadow-2xl shadow-amber-500/10">
-            <Image src="/logo.png" alt="AnyTimeHost Logo" width={160} height={64} className="h-auto w-auto mx-auto max-w-[120px] sm:max-w-[160px] lg:max-w-[200px] relative" />
-          </div>
-        </div>
+
 
         <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-amber-400 mb-4 sm:mb-6 transition-colors text-sm sm:text-base">
           <span>←</span> Back to Home
