@@ -11,7 +11,7 @@ export default function Home() {
       <ServiceCards />
       <ProcessFlow />
       <TestimonialSlider />
-      <SocialIcons />
+      <SocialIcons subText={"Please reach out via our social channels below."} />
     </main>
   );
 }

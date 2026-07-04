@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 function FloatingParticle({ delay }: { delay: number }) {
@@ -25,7 +24,6 @@ function FloatingParticle({ delay }: { delay: number }) {
 }
 
 export default function Hero() {
-  const router = useRouter();
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -95,7 +93,14 @@ export default function Hero() {
           boxShadow: "0 0 40px rgba(212, 175, 55, 0.5)",
         }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => router.push("/contact")}
+        onClick={() => {
+          const el = document.getElementById('socials');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // briefly focus for accessibility
+            (el as HTMLElement).focus?.();
+          }
+        }}
         className="mt-8 sm:mt-10 lg:mt-12 px-6 sm:px-10 lg:px-14 py-3 sm:py-4 lg:py-5 bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 text-[#0a1628] font-bold rounded-full shadow-lg shadow-amber-500/30 cursor-pointer relative z-10"
       >
         Start Today!
